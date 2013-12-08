@@ -58,10 +58,14 @@ if (isset($_POST['submit'])) {
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en-us"><!--<![endif]-->
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title></title>
+	<title>TeXcha: Prove your humanity through LaTeX</title>
 	<!-- script 
     src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
   </script -->
+  <style>
+    .texchaForm { display: inline-block; }
+    #toolbar { text-align: center; }
+  </style>
   <!-- Scripts needed by CodeCogs Equation Editor -->
   <link 
     rel="stylesheet" 
@@ -103,7 +107,7 @@ if (!$attempted) {
 ?>
 </h3>
 <img src="<?= get_latex_url($sample_latex); ?>"><br>
-<form action="" method="POST"> 
+<form class="texchaForm" action="" method="POST">
   <div id="toolbar"></div>
   <textarea id="latexInput" name="latex" rows="3" cols="39" autofocus><?= 
     $attempted ? $try_latex : '' 
