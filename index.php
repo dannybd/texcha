@@ -21,5 +21,6 @@ $test_latex = '2\equiv\sum_{i = 0}^{{}\infty}\frac{1}{2^i}{}';
 $test_md5 = get_latex_hash($test_latex);
 
 header('Content-type: text/javascript');
-echo $sample_md5 . "\n\n" . $test_md5;
+echo $sample_md5 . "\n\n" . $test_md5 . "\n\n";
+echo check_latex($sample_md5, $test_latex) ? "True" : "False";
 ?>
