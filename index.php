@@ -58,13 +58,18 @@ if (isset($_POST['submit'])) {
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en-us"><!--<![endif]-->
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="favicon.ico" />
 	<title>TeXcha: Prove your humanity through LaTeX</title>
 	<!-- script 
     src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
   </script -->
   <style>
-    .texchaForm { display: inline-block; }
-    #toolbar { text-align: center; }
+    .texchaForm {
+      display: inline-block;
+      text-align: center;
+      border: 1px solid black;
+      padding: 5px 0 5px;
+    }
   </style>
   <!-- Scripts needed by CodeCogs Equation Editor -->
   <link 
@@ -106,8 +111,8 @@ if (!$attempted) {
 }
 ?>
 </h3>
-<img src="<?= get_latex_url($sample_latex); ?>"><br>
 <form class="texchaForm" action="" method="POST">
+  <img src="<?= get_latex_url($sample_latex); ?>"><br>
   <div id="toolbar"></div>
   <textarea id="latexInput" name="latex" rows="3" cols="39" autofocus><?= 
     $attempted ? $try_latex : '' 
@@ -119,6 +124,7 @@ if (!$attempted) {
 <script type="text/javascript">
   EqEditor.embed('toolbar','','ope,bra,mat|gel,geu,rel,bin,sym','en-us');
   EqEditor.add(new EqTextArea('equation', 'latexInput'), false);
+  EqEditor.update();
 </script>
 </body>
 </html>
