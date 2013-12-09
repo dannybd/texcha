@@ -117,7 +117,7 @@ if (!$attempted) {
   <textarea id="latexInput" name="latex" rows="3" cols="39" autofocus><?= 
     $attempted ? $try_latex : '' 
   ?></textarea>
-  <p>Result: <img id="equation" align="middle" /></p>
+  <p><img id="equation" align="middle" /></p>
   <input type="submit" name="submit" value="Submit" >
 </form>
 
