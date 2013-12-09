@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) {
   </script>
   <!-- End of Scripts needed -->
 	<script>
-		var _gaq=[["_setAccount","UA_XXXXXXXX_X"],["_trackPageview",location.pathname+location.search+location.hash]];
+		var _gaq=[["_setAccount","UA-43270130-1"],["_trackPageview",location.pathname+location.search+location.hash]];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
 		g.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";
 		s.parentNode.insertBefore(g,s)}(document,"script"));
