@@ -73,6 +73,7 @@ if (isset($_POST['submit'])) {
   $correct = check_latex($hash, $try_latex);
 }
 
+header('Content-type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
 <!--[if IE 7]><html lang="en-us" class="ie ie7 lte9 lte8"><![endif]-->
@@ -80,7 +81,6 @@ if (isset($_POST['submit'])) {
 <!--[if IE 9]><html lang="en-us" class="ie ie9 lte9"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en-us"><!--<![endif]-->
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <link rel="shortcut icon" href="favicon.ico" />
 	<title>TeXcha: Prove your humanity through LaTeX</title>
 	<!-- script 
@@ -134,13 +134,28 @@ if (!$attempted) {
 }
 ?>
 </h3>
-<form class="texchaForm" action="" method="POST">
-  <img src="<?= $url; ?>"><br>
+<form 
+  class="texchaForm" 
+  action="<?= $_SERVER['REQUEST_URI'] ?>" 
+  method="POST"
+>
+  <img src="<?= $url; ?>" alt="Latex Equation"><br>
   <div id="toolbar"></div>
-  <textarea id="latexInput" name="latex" rows="3" cols="39" autofocus><?= 
-    $attempted ? $try_latex : '' 
-  ?></textarea>
-  <p><img id="equation" align="middle" /></p>
+  <textarea
+    id="latexInput" 
+    name="latex" 
+    rows="3" 
+    cols="39" 
+    autofocus><?= 
+      $attempted ? $try_latex : '' 
+    ?></textarea>
+  <p>
+    <img 
+      id="equation" 
+      src="?"
+      alt=""
+    />
+  </p>
   <input type="hidden" name="n" value="<?= $n ?>">
   <input type="submit" name="submit" value="Submit">
   <input 
