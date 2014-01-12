@@ -44,13 +44,25 @@ function pull_equations() {
   return $equations;
 }
 
-if (!isset($_GET['n'])) {
-  $_GET['n'] = 0;
+// print_r(pull_equations());
+$equations = @file_get_contents('equations.inc') ?: '';
+$equations = unserialize($equations);
+
+if (!count($equations) || isset($_GET['refresh'])) {
+  $equations = pull_equations();
+  file_put_contents(
+    'equations.inc', 
+    serialize($equations)
+  );
 }
 
-// print_r(pull_equations());
-$equations = pull_equations();
-$equation = $equations[$_GET['n']];
+if (isset($_POST['n'])) {
+  $n = intval($_POST['n']);
+} else {
+  $n = rand(0, count($equations) - 1);
+}
+
+$equation = $equations[$n];
 $url = get_latex_url($equation);
 $hash = get_latex_hash($equation);
 
@@ -129,7 +141,14 @@ if (!$attempted) {
     $attempted ? $try_latex : '' 
   ?></textarea>
   <p><img id="equation" align="middle" /></p>
-  <input type="submit" name="submit" value="Submit" >
+  <input type="hidden" name="n" value="<?= $n ?>">
+  <input type="submit" name="submit" value="Submit">
+  <input 
+    type="button" 
+    name="refresh" 
+    value="New Challenge"
+    onclick="window.location.reload();"
+  >
 </form>
 
 <script type="text/javascript">
