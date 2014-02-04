@@ -37,6 +37,21 @@ function check_latex($true_hash, $latex) {
 $equations = @file_get_contents('equations.inc') ?: '';
 $equations = unserialize($equations);
 
+function filter_equations($eqs) {
+  $eqs2 = array();
+  foreach ($eqs as $eq) {
+    preg_match_all('/\b[a-z0-9]+\b/i', $eq, $results);
+    $tokens_count = count($results[0]);
+    if ($tokens_count < 3 || $tokens_count > 8) {
+      continue;
+    }
+    $eqs2[] = $eq; // array($eq, $results[0]);
+  }
+  return $eqs2;
+}
+
+$equations = filter_equations($equations);
+
 if (!count($equations) || isset($_GET['refresh'])) {
   $equations = pull_equations();
   file_put_contents(
@@ -56,6 +71,7 @@ if (isset($_GET['imgn'])) {
 }
 
 $equation = $equations[$n];
+
 $url = get_latex_url($equation);
 $img = file_get_contents($url);
 $hash = md5($img);
