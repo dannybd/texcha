@@ -26,4 +26,4 @@ but the math has not enjoyed a similar fate; we hope to change that.
 
 ======
 
-You can view a live demo [here](http://dbd.mit.edu/texcha/)
+You can view a live demo [here](http://dbd.mit.edu/texcha/).
