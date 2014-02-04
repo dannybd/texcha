@@ -1,4 +1,4 @@
-This is TeXcha, the LaTeX-based CAPTCHA project.
+# This is TeXcha, the LaTeX-based CAPTCHA project.
 
 CAPTCHAs are used across the web to have users prove that they're human. They
 usually consist of mangled words or strings of characters which have been skewed
@@ -23,3 +23,7 @@ except instead of focusing on translating entire old books, TeXcha hopes to one
 day help transcribe equations written in old papers, articles and dissertations.
 Modern OCR tech has made transcribing the words of these documents much easier,
 but the math has not enjoyed a similar fate; we hope to change that.
+
+======
+
+You can view a live demo [here](http://dbd.mit.edu/texcha/)
